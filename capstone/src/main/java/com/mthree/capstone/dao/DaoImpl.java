@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mthree.capstone.dto;
+package com.mthree.capstone.dao;
 
 /**
  *
- * @author ArmandoGonzalez
+ * @author 88bry
  */
-public interface Dto {
+public class DaoImpl {
     
 }
