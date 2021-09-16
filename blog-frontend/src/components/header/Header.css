@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 0.1px solid lightgray;
+  padding-top: 10px;
+  width: 100%;
+  background-color: white;
+  z-index: 999;
+  position: sticky;
+  top: 0;
+}
+
+.header_left {
+  display: flex;
+}
+
+.header_left > img {
+  object-fit: contain;
+  height: 40px;
+  margin-left: -80px;
+  margin-right: 10px;
+}
+/* 
+.header_saveForAnotherFeature {
+} */
+
+.header_right {
+  display: flex;
+}

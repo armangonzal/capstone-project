@@ -21,8 +21,8 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/feed/hashtag/:hashtag_space_holder" component={Hashtag} />
           {
-            !false ?   // user  set false to user in v2 to work on user authentication
-              <Route path="/login" component={Login} />
+            !true ?   // user  set false to user in v2 to work on user authentication
+              <Route path="/" component={Login} />
               :
               <Route path="/">
                 <Header />

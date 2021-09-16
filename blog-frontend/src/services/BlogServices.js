@@ -19,7 +19,7 @@ class BlogService {
     }
 
     getLoginCredential(author) {
-        return axios.post(BLOG_API_BASE_URL + '/login/');         // author id 
+        return axios.post(BLOG_API_BASE_URL + '/login');         // author id 
     }
 
     postNewPost(newPost) {
