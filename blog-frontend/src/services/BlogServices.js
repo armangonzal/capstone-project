@@ -11,7 +11,7 @@ class BlogService {
     }
 
     getBlogs() {
-        return axios.get(BLOG_API_BASE_URL + '/blog');
+        return axios.get(BLOG_API_BASE_URL + '/author/blogs');
     }
 
     getBlogsByHashtag(hashtag) {

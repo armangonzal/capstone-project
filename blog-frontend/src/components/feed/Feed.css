@@ -1,0 +1,130 @@
+.feed {
+  flex: 0.45;
+
+  margin: 0 20px;
+}
+
+.feed_inputContainer {
+  /* display: flex;
+  justify-content: space-evenly; */
+  background-color: #fff;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.feed_input {
+  border: 1px solid lightgray;
+  border-radius: 25px;
+  display: flex;
+  padding: 10px;
+  color: gray;
+  padding-left: 15px;
+  flex: 0.9;
+  height: 60px;
+  /* width: 100%; */
+}
+
+.feed_input > form {
+  display: flex;
+  width: 100%;
+}
+
+.feed_input > form > input {
+  border: none;
+  flex: 1;
+  margin-left: 10px;
+  /* remove outline of input box */
+  outline-width: 0;
+  font-weight: 600;
+}
+
+/*  trigger submit button by enter key */
+.feed_input > form > button {
+  display: none;
+}
+
+.feed_inputOptions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.feed_info {
+  display: flex;
+}
+
+.feed_icon {
+  margin-bottom: 10px;
+  object-fit: contain;
+  height: 50px !important;
+  width: 50px !important;
+  margin-right: 10px;
+}
+
+.feed_separationLine {
+  display: flex;
+  justify-content: space-between;
+}
+.feed_horizontal {
+  border-top: 1px solid rgb(119, 115, 111);
+  flex: 0.8;
+}
+
+.feed_sorts {
+  font-size: 12px;
+  font-weight: 400;
+  flex: 0.2;
+  margin-left: 10px;
+  color: rgb(24, 24, 23);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.feed_sort {
+  color: rgba(0, 0, 0, 0.486);
+  margin-left: -5px;
+}
+
+.dropdown-item {
+  font-size: 11px;
+  font-weight: 400;
+  align-items: center;
+}
+
+.feed_dropDown {
+  color: black !important;
+  outline: none !important;
+  background-color: rgb(247, 247, 247) !important;
+  border: none !important;
+  display: inline !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  margin-top: 5px !important;
+  margin-left: -58px !important;
+  border-color: whitesmoke !important;
+}
+
+.feed_dropDown:hover,
+feed__dropDown:link,
+feed__dropDown:active,
+feed__dropDown:focus {
+  color: black !important;
+  border: none !important;
+  background-color: whitesmoke !important;
+  border-color: whitesmoke !important;
+}
+.btn-success {
+  color: black !important;
+  border: none !important;
+  background-color: whitesmoke !important;
+  border-color: whitesmoke !important;
+  box-shadow: none !important;
+}
+
+.dropdown-item:hover {
+  background-color: whitesmoke;
+  border-left: 2px solid darkgreen;
+  color: black;
+}

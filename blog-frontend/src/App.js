@@ -1,5 +1,5 @@
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import Register from './components/register/Register';
 import Login from './components/login/Login';
 import Header from './components/header/Header';
@@ -33,7 +33,6 @@ function App() {
                 </div>
               </Route>
           }
-
         </Switch>
       </div>
     </Router>

@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 
+import React from "react";
 import HomeIcon from '@material-ui/icons/Home';
 import ChatIcon from '@material-ui/icons/Chat';
 import HeaderOption from './headerOption/HeaderOption.js';

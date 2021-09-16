@@ -1,0 +1,10 @@
+.sidebar {
+  position: sticky;
+  top: 80px;
+  /* take up 20% of screen */
+  flex: 0.2;
+  /* border: 1px solid purple; */
+  border-radius: 10px;
+  text-align: center;
+  height: fit-content;
+}

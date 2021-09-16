@@ -1,5 +1,5 @@
+import React from "react";
 import { Avatar } from '@material-ui/core'
-// import { Dropdown, } from 'react-bootstrap'
 import { Dropdown } from 'react-bootstrap';
 import default_avatar from '../../../static/default_avatar.png'
 import "./HeaderOption.css"
@@ -33,6 +33,7 @@ function HeaderOption({ Icon, avatar, dropdown, onClick, title }) {
                             }
                             <Dropdown.Menu>
                                 <div className="headerOption_menu">
+
                                     <h6>Account</h6>
 
                                     <Dropdown.Item href="#">Posts & Activity</Dropdown.Item>
