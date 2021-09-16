@@ -5,78 +5,73 @@
  */
 package com.mthree.capstone.dto;
 
+import java.time.LocalDate;
+import java.util.List;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author 88bry
  */
+@Component
 public class BlogPost {
-    private int blogId;
-    private String blogTitle;
-    private String blogBody;
-    private Tag tag1, tag2, tag3;
-    private Permission allowedAdd, allowedEdit, allowedDelete;
+    
+    int post_id;
+    Author author;
+    String title, textBody;
+    List<String> hashtags;
+    LocalDate dateCreated, expiration;
 
-    public String getBlogTitle() {
-        return blogTitle;
+    public int getPost_id() {
+        return post_id;
     }
 
-    public BlogPost(String blogTitle) {
-        this.blogTitle = blogTitle;
+    public Author getAuthor() {
+        return author;
     }
 
-    public String getBlogBody() {
-        return blogBody;
+    public BlogPost(Author author) {
+        this.author = author;
     }
 
-    public void setBlogBody(String blogBody) {
-        this.blogBody = blogBody;
+    public String getTitle() {
+        return title;
     }
 
-    public Tag getTag1() {
-        return tag1;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setTag1(Tag tag1) {
-        this.tag1 = tag1;
+    public String getTextBody() {
+        return textBody;
     }
 
-    public Tag getTag2() {
-        return tag2;
+    public void setTextBody(String textBody) {
+        this.textBody = textBody;
     }
 
-    public void setTag2(Tag tag2) {
-        this.tag2 = tag2;
+    public List<String> getHashtags() {
+        return hashtags;
     }
 
-    public Tag getTag3() {
-        return tag3;
+    public void setHashtags(List<String> hashtags) {
+        this.hashtags = hashtags;
     }
 
-    public void setTag3(Tag tag3) {
-        this.tag3 = tag3;
+    public LocalDate getDateCreated() {
+        return dateCreated;
     }
 
-    public Permission getAllowedAdd() {
-        return allowedAdd;
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
-    public void setAllowedAdd(Permission allowedAdd) {
-        this.allowedAdd = allowedAdd;
+    public LocalDate getExpiration() {
+        return expiration;
     }
 
-    public Permission getAllowedEdit() {
-        return allowedEdit;
+    public void setExpiration(LocalDate expiration) {
+        this.expiration = expiration;
     }
-
-    public void setAllowedEdit(Permission allowedEdit) {
-        this.allowedEdit = allowedEdit;
-    }
-
-    public Permission getAllowedDelete() {
-        return allowedDelete;
-    }
-
-    public void setAllowedDelete(Permission allowedDelete) {
-        this.allowedDelete = allowedDelete;
-    }
+    
 }
