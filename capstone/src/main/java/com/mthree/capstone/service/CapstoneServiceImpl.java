@@ -46,7 +46,7 @@ public class CapstoneServiceImpl implements CapstoneService {
         //throws NoSuchAuthorException
         return this.dao.getAuthor(author_id);
         */
-        return new User("no name");
+        return new Author("no name");
     }
 
     @Override
