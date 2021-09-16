@@ -1,4 +1,4 @@
-import "./Header.css"
+import "./Hashtag.css"
 
 
 function Hashtag() {
