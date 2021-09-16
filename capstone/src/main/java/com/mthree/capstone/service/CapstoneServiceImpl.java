@@ -32,10 +32,10 @@ public class CapstoneServiceImpl implements CapstoneService {
     @Override
     public User authorLogin(String username, String password) {
         /*
+        //throws NoSuchAuthorException, InvalidLoginException
         Author author = this.dao.getAuthor(username);
-        Author guest = this.dao.getGuest();
         if(password = author.getPassword() ) return author;
-        else return guest;
+        else throw new InvalidLoginException("incorrect login credentials);
         */
         return new User("no name");
     }
@@ -43,6 +43,7 @@ public class CapstoneServiceImpl implements CapstoneService {
     @Override
     public User getAuthorById(int author_id) {
         /*
+        //throws NoSuchAuthorException
         return this.dao.getAuthor(author_id);
         */
         return new User("no name");
@@ -64,22 +65,20 @@ public class CapstoneServiceImpl implements CapstoneService {
     @Override
     public BlogPost getBlogPostById(int post_id) {
         /*
-        try {
-            return this.dao.getBlogPost(post_id);
-        } catch (Exception e) {
-            throw new Exception("no blog post");
-        }
+        //throws NoSuchBlogPostException
+        return this.dao.getBlogPost(post_id);
         */
         return new BlogPost("Title");
     }
 
     @Override
     public List<BlogPost> getAllBlogPosts() {
-        /*
+        /*      
         try {
             return this.dao.getAllBlogPosts();
         } catch (Exception e) {
             throw new Exception("blog access error");
+            return new ArrayList<BlogPost>();
         }
         */
         return new ArrayList<BlogPost>();
@@ -90,8 +89,8 @@ public class CapstoneServiceImpl implements CapstoneService {
         /*
         try {
             return this.dao.getAllBlogPostsByHashtag(hashTag);
-        } catch (Exception e) {
-            throw new Exception("blog access error");
+        } catch (NoSuchBlogPostException e) {
+            return new ArrayList<BlogPost>();
         }
         */
         return new ArrayList<BlogPost>();
