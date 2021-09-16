@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package capstone.src.main.java.com.mthree.capstone.exceptions;
+package com.mthree.capstone.exceptions;
 
 /**
  *
