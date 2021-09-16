@@ -10,29 +10,29 @@ import com.mthree.capstone.dto.*;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
-
+/*
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
-
+*/
 /**
  *
  * @author 88bry
  */
 
-@Repository
-@Profile({"database", "prod"})
+//@Repository
+//@Profile({"database", "prod"})
 public class DaoImpl implements Dao{
     
-    private final JdbcTemplate jdbcTemplate;
-
+    //private final JdbcTemplate jdbcTemplate;
+/*
     @Autowired
     public DaoImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+    */
     @Override
     public Author getAuthor(String username) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
