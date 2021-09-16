@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import Sidebar from './components/sidebar/Sidebar';
 import Feed from './components/feed/Feed';
 import Widgets from './components/widgets/Widgets';
+import Hashtag from './components/hashtag/Hashtag';
 
 import './App.css';
 
@@ -15,17 +16,13 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/feed/hashtag/:hashtag_space_holder" component={Hashtag} />
           {
             !false ?   // user
-              <Route path="/">
-                <Login />
-              </Route> :
+              <Route path="/login" component={Login} />
+              :
               <Route path="/">
                 <Header />
                 <div className="app_body">
