@@ -1,15 +1,37 @@
 import axios from 'axios';
 
-const BLOG_API_BASE_URL = "http://localhost:8080/api/blog/xxx";
+
+const BLOG_API_BASE_URL = "http://localhost:8080/api";
+
 
 class BlogService {
-    /*
-        GET /author/{ author_id }  (get author with author_id)
-        GET /blog/  (get all blog posts)
-        GET /blog/{ hashtag }  (get all blog posts with hashtag)
-        POST /login/  (login with username and password)
-        POST /blog/ (post new blog post)
-        POST /author/ (post new author)
-    */
+
+    getAuthorById(author_id) {
+        return axios.get(BLOG_API_BASE_URL + '/author/' + author_id);
+    }
+
+    getBlogs() {
+        return axios.get(BLOG_API_BASE_URL + '/blog');
+    }
+
+    getBlogsByHashtag(hashtag) {
+        return axios.get(BLOG_API_BASE_URL, '/blog/' + hashtag);
+    }
+
+    getLoginCredential(author) {
+        return axios.post(BLOG_API_BASE_URL + '/login/');         // author id 
+    }
+
+    postNewPost(newPost) {
+        return axios.post(BLOG_API_BASE_URL + '/author/' + newPost);
+    }
+
+    createNewUser() {
+        return axios.post(BLOG_API_BASE_URL, '/register');
+    }
+
+    // updatePost(author, postId) {}
+
+    // deletePost(author,postId) {}
 
 }
