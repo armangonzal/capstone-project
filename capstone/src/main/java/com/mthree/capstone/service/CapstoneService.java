@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author ArmandoGonzalez
  */
-public interface ServiceI {
+public interface CapstoneService {
     
     User authorLogin(String username, String password);
 

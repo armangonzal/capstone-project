@@ -21,14 +21,14 @@ import java.util.ArrayList;
 
 @Service
 @Profile({"service", "prod"})
-public class ServiceImpl implements ServiceI {
+public class CapstoneServiceImpl implements CapstoneService {
+    private final Dao dao;
     
     @Autowired
-    public ServiceImpl(Dao dao) {
+    public CapstoneServiceImpl(Dao dao) {
         this.dao = dao;
     }
-    private Dao dao;
-
+    
     @Override
     public User authorLogin(String username, String password) {
         return new User("no name");
@@ -64,8 +64,4 @@ public class ServiceImpl implements ServiceI {
         return false;
     }
 
-  
-    
-   
-    
 }
