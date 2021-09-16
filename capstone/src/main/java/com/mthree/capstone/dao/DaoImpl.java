@@ -6,7 +6,7 @@
 package com.mthree.capstone.dao;
 
 import com.mthree.capstone.dto.BlogPost;
-import com.mthree.capstone.dto.User;
+import com.mthree.capstone.dto.*;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -34,17 +34,17 @@ public class DaoImpl implements Dao{
     }
     */
     @Override
-    public User getAuthor(String username) {
+    public Author getAuthor(String username) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public User getAuthor(int author_id) {
+    public Author getAuthor(int author_id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public User addAuthor(User author) {
+    public Author addAuthor(Author author) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

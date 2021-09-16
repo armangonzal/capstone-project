@@ -13,11 +13,11 @@ import java.util.List;
  * @author ArmandoGonzalez
  */
 public interface Dao {
-    User getAuthor(String username); //throws NoSuchAuthorException
+    Author getAuthor(String username); //throws NoSuchAuthorException
     
-    User getAuthor(int author_id); //throws NoSuchAuthorException
+    Author getAuthor(int author_id); //throws NoSuchAuthorException
     
-    User addAuthor(User author); //throws DataAccessException
+    Author addAuthor(Author author); //throws DataAccessException
     
     BlogPost getBlogPost(int post_id); //throws NoSuchBlogPostException
     

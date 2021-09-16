@@ -30,18 +30,18 @@ public class CapstoneServiceImpl implements CapstoneService {
     }
     
     @Override
-    public User authorLogin(String username, String password) {
+    public Author authorLogin(String username, String password) {
         /*
         //throws NoSuchAuthorException, InvalidLoginException
         Author author = this.dao.getAuthor(username);
         if(password = author.getPassword() ) return author;
         else throw new InvalidLoginException("incorrect login credentials);
         */
-        return new User("no name");
+        return new Author("no name");
     }
 
     @Override
-    public User getAuthorById(int author_id) {
+    public Author getAuthorById(int author_id) {
         /*
         //throws NoSuchAuthorException
         return this.dao.getAuthor(author_id);
@@ -50,12 +50,12 @@ public class CapstoneServiceImpl implements CapstoneService {
     }
 
     @Override
-    public User addAuthor(User author) {
+    public Author addAuthor(Author author) {
         /*
         //throws DataAccessException
         return this.dao.addAuthor(author);
         */
-        return new User("no name");
+        return new Author("no name");
     }
 
     @Override
@@ -64,7 +64,7 @@ public class CapstoneServiceImpl implements CapstoneService {
         //throws NoSuchBlogPostException
         return this.dao.getBlogPost(post_id);
         */
-        return new BlogPost("Title");
+        return new BlogPost(new Author("no name"));
     }
 
     @Override
@@ -98,7 +98,7 @@ public class CapstoneServiceImpl implements CapstoneService {
         //throws DataAccessException
         return this.dao.addBlogPost(blogPost);
         */
-        return new BlogPost("Title");
+        return new BlogPost(new Author("no name"));
     }
 
 }

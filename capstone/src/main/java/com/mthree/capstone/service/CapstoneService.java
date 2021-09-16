@@ -16,12 +16,12 @@ import java.util.List;
  */
 public interface CapstoneService {
     
-    User authorLogin(String username, String password); 
+    Author authorLogin(String username, String password); 
         //throws NoSuchAuthorException, InvalidLoginException
 
-    User getAuthorById(int author_id); //throws NoSuchAuthorException
+    Author getAuthorById(int author_id); //throws NoSuchAuthorException
 
-    User addAuthor(User author); //throws DataAccessException
+    Author addAuthor(Author author); //throws DataAccessException
 
     BlogPost getBlogPostById(int post_id); //throws NoSuchBlogPostException
 
