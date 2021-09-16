@@ -50,16 +50,12 @@ public class CapstoneServiceImpl implements CapstoneService {
     }
 
     @Override
-    public boolean addAuthor(User author) {
+    public User addAuthor(User author) {
         /*
-        try {
-            this.dao.addAuthor(author);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        //throws DataAccessException
+        return this.dao.addAuthor(author);
         */
-        return false;
+        return new User("no name");
     }
 
     @Override
@@ -97,16 +93,12 @@ public class CapstoneServiceImpl implements CapstoneService {
     }
 
     @Override
-    public boolean addBlogPost(BlogPost blogPost) {
+    public BlogPost addBlogPost(BlogPost blogPost) {
         /*
-        try {
-            this.dao.addBlogPost(blogPost);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        //throws DataAccessException
+        return this.dao.addBlogPost(blogPost);
         */
-        return false;
+        return new BlogPost("Title");
     }
 
 }

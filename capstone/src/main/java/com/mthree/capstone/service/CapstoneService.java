@@ -16,17 +16,18 @@ import java.util.List;
  */
 public interface CapstoneService {
     
-    User authorLogin(String username, String password);
+    User authorLogin(String username, String password); 
+        //throws NoSuchAuthorException, InvalidLoginException
 
-    User getAuthorById(int author_id);
+    User getAuthorById(int author_id); //throws NoSuchAuthorException
 
-    boolean addAuthor(User author);
+    User addAuthor(User author); //throws DataAccessException
 
-    BlogPost getBlogPostById(int post_id);
+    BlogPost getBlogPostById(int post_id); //throws NoSuchBlogPostException
 
-    List<BlogPost> getAllBlogPosts();
+    List<BlogPost> getAllBlogPosts(); 
 
     List<BlogPost> getBlogPostsByHastag(String hashTag);
 
-    boolean addBlogPost(BlogPost blogPost);
+    BlogPost addBlogPost(BlogPost blogPost); //throws DataAccessException
 }
