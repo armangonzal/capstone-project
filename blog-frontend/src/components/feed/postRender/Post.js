@@ -13,3 +13,4 @@ function Post() {
 
 export default Post;
 
+// ({ id, data: { author, title, textBody, hashtags, dateCreated }

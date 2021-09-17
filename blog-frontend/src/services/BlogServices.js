@@ -11,7 +11,7 @@ class BlogService {
     }
 
     getBlogs() {
-        return axios.get(BLOG_API_BASE_URL + '/author/blogs');
+        return axios.get(BLOG_API_BASE_URL + '/blogs');
     }
 
     getBlogsByHashtag(hashtag) {
@@ -35,3 +35,6 @@ class BlogService {
     // deletePost(author,postId) {}
 
 }
+
+
+export default new BlogService()
