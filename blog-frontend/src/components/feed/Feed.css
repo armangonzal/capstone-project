@@ -78,28 +78,6 @@
   align-items: center;
 }
 
-.feed_dropDown {
-  color: black !important;
-  outline: none !important;
-  background-color: rgb(247, 247, 247) !important;
-  border: none !important;
-  display: inline !important;
-  padding: 0 !important;
-  font-size: 12px !important;
-  margin-top: 5px !important;
-  margin-left: -58px !important;
-  border-color: whitesmoke !important;
-}
-
-.feed_dropDown:hover,
-feed_dropDown:link,
-feed_dropDown:active,
-feed_dropDown:focus {
-  color: black !important;
-  border: none !important;
-  background-color: whitesmoke !important;
-  border-color: whitesmoke !important;
-}
 .btn-success {
   color: black !important;
   border: none !important;
@@ -152,15 +130,20 @@ feed_dropDown:focus {
   min-width: 300px;
   z-index: 2;
   margin-left: -50px;
-  margin-top: -80px;
+  margin-top: -70px;
   border-radius: 15px;
 }
 
+.form-control::-webkit-input-placeholder {
+  font-size: 12px;
+  color: rgb(146, 143, 143);
+}
 .modal-content > p {
   font-weight: 400;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.9);
   padding-bottom: 15px;
+
   border-bottom: 1px solid lightgray;
 }
 .close-modal {
@@ -171,7 +154,7 @@ feed_dropDown:focus {
 }
 
 .sendPostBtn {
-  background-color: #1c72c7;
+  /* background-color: #1c72c7; */
   box-shadow: 0 2px 0 darkgray;
   color: white;
   /* padding: 1em 1.5em; */
@@ -179,11 +162,10 @@ feed_dropDown:focus {
   border-radius: 28px;
   cursor: pointer;
   font-size: 12px;
-  /* padding: 16px 31px; */
 }
 
 .sendPostBtn:hover {
-  background-color: #1c72c7;
+  box-shadow: 0 2px 0 lightgray;
   color: black;
 }
 
@@ -191,3 +173,9 @@ feed_dropDown:focus {
   box-shadow: none;
   top: 5px;
 }
+
+.form-bot {
+  display: flex;
+  justify-content: space-between;
+}
+

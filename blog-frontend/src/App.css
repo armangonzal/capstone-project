@@ -25,3 +25,26 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(transparent, gray);
 }
+
+.feed_dropDown {
+  color: black !important;
+  outline: none !important;
+  background-color: rgb(247, 247, 247) !important;
+  border: none !important;
+  display: inline !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  margin-top: 5px !important;
+  margin-left: -58px !important;
+  border-color: whitesmoke !important;
+}
+
+.feed_dropDown:hover,
+feed_dropDown:link,
+feed_dropDown:active,
+feed_dropDown:focus {
+  color: black !important;
+  border: none !important;
+  background-color: whitesmoke !important;
+  border-color: whitesmoke !important;
+}

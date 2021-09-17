@@ -20,7 +20,7 @@ class Feed extends Component {
           author: "Eric Wang",
           title: "Challenge makes life interesting",
           textBody: "expedita odio, qui laborum reiciendis eligendi",
-          hashtags: ["Let's go", "Power Up"],
+          hashtags: ["Power Up"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
@@ -29,7 +29,7 @@ class Feed extends Component {
           author: "Eric Wang",
           title: "Challenge makes life interesting",
           textBody: "incidunt commodi suscipit placeat deserunt",
-          hashtags: ["Let's go", "Power Up"],
+          hashtags: ["Creative"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
@@ -38,7 +38,7 @@ class Feed extends Component {
           author: "Eric Wang",
           title: "Challenge makes life interesting",
           textBody: "Architecto animi velit vel totam",
-          hashtags: ["Let's go", "Power Up"],
+          hashtags: ["DIY"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
@@ -47,12 +47,12 @@ class Feed extends Component {
           author: "Eric Wang",
           title: "Challenge makes life interesting",
           textBody: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          hashtags: ["Let's go", "Power Up"],
+          hashtags: ["Skydream"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
       ],
-      sortOption: "Recent",
+      sortOption: "Top",
       newPostContent: {},
       user: {
         photoUrl: default_avatar,
@@ -62,10 +62,12 @@ class Feed extends Component {
       modal: false,
       postTitle: "",
       postBody: "",
+      hashtags: "",
     };
     this.handleSortOption = this.handleSortOption.bind(this);
   }
-  // used to connecting to backend data
+
+  // uncomment  this line to connect to backend server    REST end point
   componentDidMount() {
     //remote data
     // BlogService.getBlogs().then((res) => {
@@ -80,7 +82,7 @@ class Feed extends Component {
     });
   };
 
-  handleAddPost = (e) => {
+  handleAddOrCancelPost = (e) => {
     this.setState({
       modal: !this.state.modal,
     });
@@ -88,16 +90,32 @@ class Feed extends Component {
   submitNewPost = (e) => {
     e.preventDefault();
     this.state.fetchedPosts.push({
-      id: this.getRandomId(),
+      id: this.getRandomId().substr(0, 5),
       author: "Eric Wang",
-      title: this.state.postTitle,
-      textBody: this.state.postBody,
-      hashtags: ["Let's go", "Power Up"],
+      title: this.getTitle(),
+      textBody: this.getBody(),
+      hashtags: this.parseHashtag(),
       dateCreated: this.getCurrentDate(),
       expiration: "9/16/2022",
     });
+
+    // uncomment  this line to connect to backend server         REST end point
+
+    // BlogService.postNewPost({
+    //   id: this.getRandomId().substr(0, 5),
+    //   author: "Eric Wang",
+    //   title: this.getTitle(),
+    //   textBody: this.getBody(),
+    //   hashtags: this.parseHashtag(),
+    //   dateCreated: this.getCurrentDate(),
+    //   expiration: "9/16/2022",
+    // });
+
     this.setState({
       modal: !this.state.modal,
+      postTitle: "",
+      postBody: "",
+      hashtags: "",
     });
   };
   getCurrentDate = () => {
@@ -110,6 +128,15 @@ class Feed extends Component {
   };
   getRandomId = () => {
     return uuidv4();
+  };
+  getTitle = () => {
+    return this.state.postTitle;
+  };
+  getBody = () => {
+    return this.state.postBody;
+  };
+  parseHashtag = () => {
+    return this.state.hashtags.split("#").filter((e) => e.length > 0);
   };
   render() {
     return (
@@ -125,7 +152,7 @@ class Feed extends Component {
             </Avatar>
             <div
               className="feed_input modal_container"
-              onClick={this.handleAddPost}
+              onClick={this.handleAddOrCancelPost}
             >
               <p> Start a post</p>
             </div>
@@ -140,39 +167,61 @@ class Feed extends Component {
             <Form>
               <Row>
                 <Col>
-                  <Form.Control placeholder="Post subject" />
-                </Col>
-              </Row>
-              <br />
-              <Row>
-                <Col>
-                  <Form.Group
+                  <Form.Control
+                    placeholder="Post subject"
                     className="mb-3"
                     controlId="exampleForm.ControlTextarea1"
                     value={this.state.postTitle}
                     onChange={(e) =>
                       this.setState({ postTitle: e.target.value })
                     }
-                  >
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      placeholder="Drop your post body here"
-                      value={this.state.postBody}
-                      onChange={(e) =>
-                        this.setState({ postBody: e.target.value })
-                      }
-                    />
-                  </Form.Group>
+                  />
                 </Col>
               </Row>
-              <Button
-                type="submit"
-                onClick={this.submitNewPost}
-                className="sendPostBtn"
-              >
-                Send Post
-              </Button>
+              <Row>
+                <Col>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Drop your post body here"
+                    value={this.state.postBody}
+                    onChange={(e) =>
+                      this.setState({ postBody: e.target.value })
+                    }
+                  />
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col>
+                  <Form.Control
+                    as="textarea"
+                    rows={1}
+                    placeholder="Add hashtags  (ex:  #softwareengineering #programming #coding)"
+                    value={this.state.hashtags}
+                    onChange={(e) =>
+                      this.setState({ hashtags: e.target.value })
+                    }
+                  />
+                </Col>
+              </Row>
+              <br />
+              <div className="form-bot">
+                <Button
+                  type="submit"
+                  onClick={this.submitNewPost}
+                  className="sendPostBtn"
+                >
+                  Send Post
+                </Button>
+                <Button
+                  type="cancel"
+                  onClick={this.handleAddOrCancelPost}
+                  className="sendPostBtn"
+                >
+                  Cancel{"  "}
+                </Button>
+              </div>
             </Form>
           </div>
         )}
@@ -189,8 +238,8 @@ class Feed extends Component {
                 {this.state.sortOption}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => this.handleSortOption("Past")}>
-                  Past
+                <Dropdown.Item onClick={() => this.handleSortOption("Top")}>
+                  Top
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => this.handleSortOption("Recent")}>
                   Recent
