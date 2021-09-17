@@ -14,15 +14,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Author {
     
-    int author_id;
-    boolean isAdmin;
-    String username, password;
+    private int authorId;
+    private boolean isAdmin;
+    private String username, password;
 
-    public int getAuthor_id() {
-        return author_id;
+    public Author(String username) {
+        this.username = username;
     }
 
-    public boolean isIsAdmin() {
+    public int getAuthor_id() {
+        return authorId;
+    }
+
+    public boolean isAdmin() {
         return isAdmin;
     }
 
@@ -34,10 +38,6 @@ public class Author {
         return username;
     }
 
-    public Author(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -45,5 +45,12 @@ public class Author {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
+
+    public int getAuthorId() {
+        return this.authorId;
+    }
 }

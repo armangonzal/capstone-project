@@ -16,22 +16,30 @@ import org.springframework.stereotype.Component;
 @Component
 public class BlogPost {
     
-    int post_id;
-    Author author;
-    String title, textBody;
-    List<String> hashtags;
-    LocalDate dateCreated, expiration;
+    private int postId;
+    private int authorId;
+    private String title, textBody;
+    private List<String> hashtags;
+    private LocalDate dateCreated, expiration;
 
-    public int getPost_id() {
-        return post_id;
+    public BlogPost() {
+
     }
 
-    public Author getAuthor() {
-        return author;
+    public int getPostId() {
+        return postId;
     }
 
-    public BlogPost(Author author) {
-        this.author = author;
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     public String getTitle() {

@@ -64,7 +64,7 @@ public class CapstoneServiceImpl implements CapstoneService {
         //throws NoSuchBlogPostException
         return this.dao.getBlogPost(post_id);
         */
-        return new BlogPost(new Author("no name"));
+        return new BlogPost();
     }
 
     @Override
@@ -98,7 +98,7 @@ public class CapstoneServiceImpl implements CapstoneService {
         //throws DataAccessException
         return this.dao.addBlogPost(blogPost);
         */
-        return new BlogPost(new Author("no name"));
+        return new BlogPost();
     }
 
 }
