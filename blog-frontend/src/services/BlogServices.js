@@ -7,14 +7,14 @@ const BLOG_API_BASE_URL = "http://localhost:8080/api";
 class BlogService {
 
     getAuthorById(author_id) {
-        return axios.get(BLOG_API_BASE_URL + '/author/' + author_id);
+        return axios.get(BLOG_API_BASE_URL + '/author/' + author_id);          // hmm i don't need this one 
     }
                                                                 // done
     getBlogs() {
         return axios.get(BLOG_API_BASE_URL + '/blogs');
     }
 
-    getBlogsByHashtag(hashtag) {
+    getBlogsByHashtag(hashtag) {                                 // done
         return axios.get(BLOG_API_BASE_URL, '/blog/' + hashtag);
     }
 
@@ -26,7 +26,7 @@ class BlogService {
         return axios.post(BLOG_API_BASE_URL + '/author/' + newPost);
     }
 
-    createNewUser() {        // done
+    createNewUser() {                                           // done
         return axios.post(BLOG_API_BASE_URL, '/register');
     }
 

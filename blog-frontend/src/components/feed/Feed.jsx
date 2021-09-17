@@ -16,38 +16,20 @@ class Feed extends Component {
       //fetchedPosts: [],
       fetchedPosts: [
         {
-          id: 2,
+          id: 1,
           author: "Eric Wang",
           title: "Challenge makes life interesting",
-          textBody: "expedita odio, qui laborum reiciendis eligendi",
+          textBody: "Not sure if this is correct, just another testing",
           hashtags: ["Power Up"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
         {
-          id: 3,
+          id: 2,
           author: "Eric Wang",
           title: "Challenge makes life interesting",
           textBody: "incidunt commodi suscipit placeat deserunt",
           hashtags: ["Creative"],
-          dateCreated: "9/16/2021",
-          expiration: "9/16/2022",
-        },
-        {
-          id: 4,
-          author: "Eric Wang",
-          title: "Challenge makes life interesting",
-          textBody: "Architecto animi velit vel totam",
-          hashtags: ["DIY"],
-          dateCreated: "9/16/2021",
-          expiration: "9/16/2022",
-        },
-        {
-          id: 5,
-          author: "Eric Wang",
-          title: "Challenge makes life interesting",
-          textBody: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          hashtags: ["Skydream"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
@@ -63,6 +45,12 @@ class Feed extends Component {
       postTitle: "",
       postBody: "",
       hashtags: "",
+      nPostTitle: "",
+      nPostBody: "",
+      nHashtags: "",
+      modal2: false,
+      modal3: false,
+      target: -1,
     };
     this.handleSortOption = this.handleSortOption.bind(this);
   }
@@ -113,9 +101,14 @@ class Feed extends Component {
 
     this.setState({
       modal: !this.state.modal,
+      modal2: !this.state.modal2,
+      modal3: !this.state.modal3,
       postTitle: "",
       postBody: "",
       hashtags: "",
+      nPostTitle: "",
+      nPostBody: "",
+      nHashtags: "",
     });
   };
   getCurrentDate = () => {
@@ -137,6 +130,58 @@ class Feed extends Component {
   };
   parseHashtag = () => {
     return this.state.hashtags.split("#").filter((e) => e.length > 0);
+  };
+
+  deleteAPost = () => {
+    let temp = this.target;
+    this.setState({
+      fetchedPosts: this.state.fetchedPosts.filter((e) => e.id !== temp),
+    });
+  };
+  editAPost = () => {
+    this.setState({
+      modal3: !this.state.modal3,
+    });
+  };
+
+  finshEditingPost = () => {
+    // let temp = this.target;
+    // let data = this.state.fetchedPosts.filter((e) => e.id === temp);
+    // this.setState({
+    //   fetchedPosts: this.state.fetchedPosts.filter((e) => e.id !== temp),
+    // });
+    // console.log("yo");
+    // if (this.nPostTitle !== "") {
+    //   data.title = this.nPostTitle;
+    // }
+    // if (this.nPostBody !== "") {
+    //   data.textBody = this.nPostBody;
+    // }
+    // if (this.nHashtags !== "") {
+    //   data.hashtags = this.parsenHashtag();
+    // }
+    // data.dateCreated = this.getCurrentDate();
+    // this.state.fetchedPosts.push(data);
+  };
+  cancelForModal3 = () => {
+    this.setState({
+      modal3: false,
+    });
+  };
+  handleDeleteAndEdit = (id) => {
+    this.setState({
+      modal2: !this.state.modal2,
+      target: id,
+    });
+  };
+  parsenHashtag = () => {
+    return this.state.nHashtags.split("#").filter((e) => e.length > 0);
+  };
+
+  cancalAction = () => {
+    this.setState({
+      modal2: !this.state.modal2,
+    });
   };
   render() {
     return (
@@ -254,14 +299,48 @@ class Feed extends Component {
             {this.state.fetchedPosts.map((e) => (
               <Post
                 key={e.id}
+                id={e.id}
                 name={e.author}
                 title={e.title}
                 description={e.textBody}
                 hashtags={e.hashtags}
                 dateCreated={e.dateCreated}
+                handleDeleteAndEdit={this.handleDeleteAndEdit}
               />
             ))}
           </FlipMove>
+          {this.state.modal2 && (
+            <div className="modal-content">
+              <Form>
+                <p>Do you want to delete a post, edit a post, or exit ??</p>
+                <br />
+                <div className="form-bot">
+                  <Button
+                    type="submit"
+                    onClick={this.deleteAPost}
+                    className="sendPostBtn"
+                  >
+                    Delete
+                  </Button>
+                  {/* <Button
+                    type="submit"
+                    onClick={this.editAPost}
+                    className="sendPostBtn"
+                  >
+                    Edit
+                  </Button> */}
+
+                  <Button
+                    type="cancel"
+                    onClick={this.cancalAction}
+                    className="sendPostBtn"
+                  >
+                    Cancel{"  "}
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          )}
         </div>
       </div>
     );

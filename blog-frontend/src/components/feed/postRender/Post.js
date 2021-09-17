@@ -8,11 +8,11 @@ import { v4 as uuidv4 } from 'uuid';
 import "./Post.css"
 
 
-const Post = forwardRef(({ name, title, description, hashtags, dateCreated }, ref) => {
+const Post = forwardRef(({ id, name, title, description, hashtags, dateCreated, handleDeleteAndEdit }, ref) => {
     // function handleHashTag(e) {
     // }
     return (
-        <div ref={ref} className="post">
+        <div ref={ref} className="post" onClick={() => handleDeleteAndEdit(id)}>
             <div className="post_header">
                 <Avatar src={default_avatar} alt="userProfile">{name && name[0]}</Avatar>
                 <div className="post_info">
