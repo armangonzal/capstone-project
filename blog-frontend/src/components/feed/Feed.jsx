@@ -14,48 +14,35 @@ class Feed extends Component {
       sortOption: "Recent",
       newPostContent: {},
     };
+    this.handleSortOption = this.handleSortOption.bind(this);
   }
 
   componentDidMount() {
-    BlogService.getBlogs()
-    .then(res => {
-        let posts = res.data
-        this.set(
-            posts.map(
-                p => (
-                    {
-                        id: p.post_id,
-                        author: p.author,
-                        title: p.title,
-                        textBody: p.textBody,
-                        hashtags: p.hashtags,
-                        dateCreated: p.dateCreated,
-                        expiration: p.expiration
-                    }
-                )
-            )
-        )
-        })
-    this.setState((prevState) => ({
-      fetchedPosts: [
-        ...prevState.fetchedPosts,
-        {
-          // temporary data
-          id: 3,
-          author: "Eric Wang",
-          title: "Challenge makes life interesting",
-          textBody: "Mr. Title is correct",
-          hashtags: "Let's go ",
-          dateCreated: "9/16/2021",
-          expiration: "9/16/2022",
-        },
-      ],
-    }));
+    // remote data
+    // BlogService.getBlogs().then(
+    //     res =>{
+    //         this.setState({fetchedPosts: res.data});
+    //     }
+    // )
+
+    // local data
+
+    this.setState({
+      fetchedPosts: {
+        id: 3,
+        author: "Eric Wang",
+        title: "Challenge makes life interesting",
+        textBody: "Mr. Title is correct",
+        hashtags: "Let's go ",
+        dateCreated: "9/16/2021",
+        expiration: "9/16/2022",
+      },
+    });
   }
 
-  handleSortOption = (event) => {
+  handleSortOption = (e) => {
     this.setState({
-      sortOption: event.target.value,
+      sortOption: e,
     });
   };
 
@@ -73,13 +60,13 @@ class Feed extends Component {
                 id="dropdown-basic"
                 className="feed_dropDown"
               >
-                {this.sortOption}
+                {this.state.sortOption}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item onClick={(e) => this.handleSortOption("top")}>
+                <Dropdown.Item onClick={() => this.handleSortOption("Top")}>
                   Top
                 </Dropdown.Item>
-                <Dropdown.Item onClick={(e) => this.handleSortOption("recent")}>
+                <Dropdown.Item onClick={() => this.handleSortOption("Recent")}>
                   Recent
                 </Dropdown.Item>
                 {/* <Dropdown.Item >Top</Dropdown.Item>
@@ -92,7 +79,7 @@ class Feed extends Component {
         <div className="feed_posts">
           <FlipMove>
             {
-              //console.log(this.fetchedPosts.length)
+              //   console.log(this.state.fetchedPosts)
               // fetchedPosts.map(({ id, data: { author, title, textBody, hashtags, dateCreated } }) => (
               //     <Post
               //         key={id}
