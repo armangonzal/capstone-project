@@ -15,7 +15,7 @@ class BlogService {
     }
 
     getBlogsByHashtag(hashtag) {
-        return axios.get(BLOG_API_BASE_URL, '/blog/' + hashtag);
+        return axios.get(BLOG_API_BASE_URL, '/blog/' + hashtag); // done 
     }
 
     getLoginCredential(author) {                                  // done 
