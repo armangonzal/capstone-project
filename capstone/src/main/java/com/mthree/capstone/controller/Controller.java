@@ -8,7 +8,6 @@ package com.mthree.capstone.controller;
 import com.mthree.capstone.service.*;
 import com.mthree.capstone.dto.*;
 import com.mthree.capstone.exceptions.*;
-import com.mthree.capstone.exceptions.CapstoneException.NoSuchBlogPostException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -34,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author ArmandoGonzalez
  */
-public class Controller throws InvalidLoginException, NoSuchBlogPostException, NoSuchAuthorException, DataAccessException{
+public class Controller {
     
     CapstoneService service;
     Author currentAuthor;
@@ -57,19 +56,15 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
         
     }
 
-    
-
-    
-
-
     @GetMapping("blog")
     public String displayblogPosts(Model model) throws DataAccessException{
-        List<BlogPost> blogPosts = service.getAllBlogPosts();
+        
         try{
-            model.addAttribute("blogPosts", blogPosts);
+            List<BlogPost> blogPosts = service.getAllBlogPosts();    
         }catch(DataAccessException e){
             System.out.println("problem getting posts, please try again.")
         }
+        model.addAttribute("blogPosts", blogPosts);
         return "blogPosts";
     }
 
@@ -79,7 +74,7 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
         String hashtag = request.getParameter("hashtag");
         
         try{
-            List<BlogPost> blogPosts = service.getlogPostsByHashtag(hashtag);
+            List<BlogPost> blogPosts = service.getBlogPostsByHashtag(hashtag);
         }catch(NoSuchBlogPostException e){
             System.out.println("Couldn;t find any posts with that hashtag, please try again.");
         }
@@ -91,7 +86,7 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
     public String getAuthorById(HttpServletRequest request, Model model) throws NoSuchAuthorException{
         int authorId = Integer.parseInt(request.getParameter("author_id"));
         try{
-            Author author = service.getAuthoryId(authorId);
+            Author author = service.getAuthorById(authorId);
         }catch(NoSuchAuthorException e){
             System.out.println("No author with that id, please try again.")
         }
