@@ -79,9 +79,11 @@ p:nth-child(3) {
   cursor: pointer;
 }
 .post__threeDot {
-  margin-left: 250px;
+  margin-left: 90%;
   color: gray;
   width: 20px !important;
+  position: absolute;
+  z-index: 1;
 }
 
 .post__threeDot:hover {

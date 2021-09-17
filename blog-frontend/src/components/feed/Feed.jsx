@@ -6,6 +6,7 @@ import BlogService from "../../services/BlogServices";
 import default_avatar from "../../static/default_avatar.png";
 import Post from "./postRender/Post";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
 import "./Feed.css";
 
 class Feed extends Component {
@@ -15,10 +16,10 @@ class Feed extends Component {
       //fetchedPosts: [],
       fetchedPosts: [
         {
-          id: 3,
+          id: 2,
           author: "Eric Wang",
           title: "Challenge makes life interesting",
-          textBody: "Yolo~~~~~~~~~~~~~~~",
+          textBody: "expedita odio, qui laborum reiciendis eligendi",
           hashtags: ["Let's go", "Power Up"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
@@ -27,25 +28,25 @@ class Feed extends Component {
           id: 3,
           author: "Eric Wang",
           title: "Challenge makes life interesting",
-          textBody: "Yolo~~~~~~~~~~~~~~~",
+          textBody: "incidunt commodi suscipit placeat deserunt",
           hashtags: ["Let's go", "Power Up"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
         {
-          id: 3,
+          id: 4,
           author: "Eric Wang",
           title: "Challenge makes life interesting",
-          textBody: "Yolo~~~~~~~~~~~~~~~",
+          textBody: "Architecto animi velit vel totam",
           hashtags: ["Let's go", "Power Up"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
         },
         {
-          id: 3,
+          id: 5,
           author: "Eric Wang",
           title: "Challenge makes life interesting",
-          textBody: "Yolo~~~~~~~~~~~~~~~",
+          textBody: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
           hashtags: ["Let's go", "Power Up"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
@@ -59,10 +60,11 @@ class Feed extends Component {
         displayName: "Eric",
       },
       modal: false,
+      postTitle: "",
+      postBody: "",
     };
     this.handleSortOption = this.handleSortOption.bind(this);
   }
-
   // used to connecting to backend data
   componentDidMount() {
     //remote data
@@ -74,6 +76,7 @@ class Feed extends Component {
   handleSortOption = (e) => {
     this.setState({
       sortOption: e,
+      fetchedPosts: this.state.fetchedPosts.sort().reverse(),
     });
   };
 
@@ -82,12 +85,31 @@ class Feed extends Component {
       modal: !this.state.modal,
     });
   };
-
   submitNewPost = (e) => {
-    e.preventdefault();
+    e.preventDefault();
+    this.state.fetchedPosts.push({
+      id: this.getRandomId(),
+      author: "Eric Wang",
+      title: this.state.postTitle,
+      textBody: this.state.postBody,
+      hashtags: ["Let's go", "Power Up"],
+      dateCreated: this.getCurrentDate(),
+      expiration: "9/16/2022",
+    });
     this.setState({
       modal: !this.state.modal,
     });
+  };
+  getCurrentDate = () => {
+    let today = new Date();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    let date = today.getDate();
+
+    return `${month}/${date}/${year}`;
+  };
+  getRandomId = () => {
+    return uuidv4();
   };
   render() {
     return (
@@ -118,7 +140,7 @@ class Feed extends Component {
             <Form>
               <Row>
                 <Col>
-                  <Form.Control placeholder="Message Subject" o />
+                  <Form.Control placeholder="Post subject" />
                 </Col>
               </Row>
               <br />
@@ -127,18 +149,26 @@ class Feed extends Component {
                   <Form.Group
                     className="mb-3"
                     controlId="exampleForm.ControlTextarea1"
+                    value={this.state.postTitle}
+                    onChange={(e) =>
+                      this.setState({ postTitle: e.target.value })
+                    }
                   >
                     <Form.Control
                       as="textarea"
                       rows={3}
-                      placeholder="Drop your message here"
+                      placeholder="Drop your post body here"
+                      value={this.state.postBody}
+                      onChange={(e) =>
+                        this.setState({ postBody: e.target.value })
+                      }
                     />
                   </Form.Group>
                 </Col>
               </Row>
               <Button
                 type="submit"
-                onClick={this.state.handleAddPost}
+                onClick={this.submitNewPost}
                 className="sendPostBtn"
               >
                 Send Post
@@ -159,8 +189,8 @@ class Feed extends Component {
                 {this.state.sortOption}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => this.handleSortOption("Top")}>
-                  Top
+                <Dropdown.Item onClick={() => this.handleSortOption("Past")}>
+                  Past
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => this.handleSortOption("Recent")}>
                   Recent
@@ -173,8 +203,6 @@ class Feed extends Component {
         <div className="feed_posts">
           <FlipMove>
             {this.state.fetchedPosts.map((e) => (
-              //   console.log(e.author);
-
               <Post
                 key={e.id}
                 name={e.author}
