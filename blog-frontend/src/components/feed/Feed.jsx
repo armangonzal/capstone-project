@@ -10,35 +10,30 @@ class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fetchedPosts: {},
+      //fetchedPosts: [],
+      fetchedPosts: [
+        {
+          id: 3,
+          author: "Eric Wang",
+          title: "Challenge makes life interesting",
+          textBody: "Mr.Title is right",
+          hashtags: ["Let's go", "Power Up"],
+          dateCreated: "9/16/2021",
+          expiration: "9/16/2022",
+        },
+      ],
       sortOption: "Recent",
       newPostContent: {},
     };
     this.handleSortOption = this.handleSortOption.bind(this);
   }
 
-  componentDidMount() {
-    // remote data
-    // BlogService.getBlogs().then(
-    //     res =>{
-    //         this.setState({fetchedPosts: res.data});
-    //     }
-    // )
-
-    // local data
-
-    this.setState({
-      fetchedPosts: {
-        id: 3,
-        author: "Eric Wang",
-        title: "Challenge makes life interesting",
-        textBody: "Mr. Title is correct",
-        hashtags: "Let's go ",
-        dateCreated: "9/16/2021",
-        expiration: "9/16/2022",
-      },
-    });
-  }
+  // componentDidMount() {
+  // remote data
+  // BlogService.getBlogs().then((res) => {
+  //   this.setState({ fetchedPosts: res.data });
+  // });
+  //   }
 
   handleSortOption = (e) => {
     this.setState({
@@ -78,19 +73,18 @@ class Feed extends Component {
 
         <div className="feed_posts">
           <FlipMove>
-            {
-              //   console.log(this.state.fetchedPosts)
-              // fetchedPosts.map(({ id, data: { author, title, textBody, hashtags, dateCreated } }) => (
-              //     <Post
-              //         key={id}
-              //         name={author}
-              //         title={title}
-              //         description={textBody}
-              //         hashtags={hashtags}
-              //         photoUrl={dateCreated}
-              //     />
-              // ))
-            }
+            {this.state.fetchedPosts.map((e) => (
+              //   console.log(e.author);
+
+              <Post
+                key={e.id}
+                name={e.author}
+                title={e.title}
+                description={e.textBody}
+                hashtags={e.hashtags}
+                dateCreated={e.dateCreated}
+              />
+            ))}
           </FlipMove>
         </div>
       </div>
