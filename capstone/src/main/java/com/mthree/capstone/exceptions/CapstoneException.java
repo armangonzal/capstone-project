@@ -12,10 +12,10 @@ package com.mthree.capstone.exceptions;
 public class CapstoneException  {
 	
 	//This one was a test exception
-	public class DataAccessException extends Exception { 
-	    public DataAccessException(String search, String catagorey) {
-	        super(search + " is not an available " + catagorey + ". Data cannot be retrieved.");
-	    }
+	public class DataAccessException extends Exception {
+		public DataAccessException(String search, String catagorey) {
+			super(search + " is not an available " + catagorey + ". Data cannot be retrieved.");
+		}
 	}
 	
 	public class NoSuchBlogPostException extends Exception { 
@@ -24,7 +24,7 @@ public class CapstoneException  {
 	    }
 	}
 	
-	public class NoSuchAuthorException extends Exception { 
+	public class NoSuchAuthorException extends Exception {
 	    public NoSuchAuthorException(String search) {
 	        super(search + " is not an Author. Data cannot be retrieved.");
 	    }
