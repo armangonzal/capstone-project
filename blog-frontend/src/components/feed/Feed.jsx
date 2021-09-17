@@ -28,7 +28,7 @@ class Feed extends Component {
           id: 2,
           author: "Eric Wang",
           title: "Challenge makes life interesting",
-          textBody: "incidunt commodi suscipit placeat deserunt",
+          textBody: "New Bug",
           hashtags: ["Creative"],
           dateCreated: "9/16/2021",
           expiration: "9/16/2022",
@@ -165,7 +165,7 @@ class Feed extends Component {
   };
   cancelForModal3 = () => {
     this.setState({
-      modal3: false,
+      modal3: !this.state.modal3,
     });
   };
   handleDeleteAndEdit = (id) => {
@@ -322,17 +322,81 @@ class Feed extends Component {
                   >
                     Delete
                   </Button>
-                  {/* <Button
+                  <Button
                     type="submit"
                     onClick={this.editAPost}
                     className="sendPostBtn"
                   >
                     Edit
-                  </Button> */}
+                  </Button>
 
                   <Button
                     type="cancel"
                     onClick={this.cancalAction}
+                    className="sendPostBtn"
+                  >
+                    Cancel{"  "}
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          )}
+          {this.state.modal3 && (
+            <div className="modal-content">
+              <p>Editing a post</p>
+              <Form>
+                <Row>
+                  <Col>
+                    <Form.Control
+                      placeholder="Re-editing post subject"
+                      className="mb-3"
+                      controlId="exampleForm.ControlTextarea1"
+                      value={this.state.nPostTitle}
+                      onChange={(e) =>
+                        this.setState({ nPostTitle: e.target.value })
+                      }
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      placeholder="Re-editing post body "
+                      value={this.state.nPostBody}
+                      onChange={(e) =>
+                        this.setState({ nPostBody: e.target.value })
+                      }
+                    />
+                  </Col>
+                </Row>
+                <br />
+                <Row>
+                  <Col>
+                    <Form.Control
+                      as="textarea"
+                      rows={1}
+                      placeholder="Re-editing or keep it as default"
+                      value={this.state.nhashtags}
+                      onChange={(e) =>
+                        this.setState({ nhashtags: e.target.value })
+                      }
+                    />
+                  </Col>
+                </Row>
+                <br />
+                <div className="form-bot">
+                  <Button
+                    type="submit"
+                    onClick={this.finshEditingPost}
+                    className="sendPostBtn"
+                  >
+                    Save Editing
+                  </Button>
+                  <Button
+                    type="cancel"
+                    onClick={this.cancelForModal3}
                     className="sendPostBtn"
                   >
                     Cancel{"  "}

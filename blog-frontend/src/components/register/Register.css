@@ -46,6 +46,7 @@
   background-color: rgb(25, 64, 109) !important;
   transition-timing-function: ease-in;
   transition: all 0.5s;
+  color: white;
 }
 .register_aggrement {
   display: grid;
