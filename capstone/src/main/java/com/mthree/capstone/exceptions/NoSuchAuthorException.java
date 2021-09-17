@@ -9,7 +9,9 @@ package com.mthree.capstone.exceptions;
  *
  * @author ArmandoGonzalez
  */
-public class CapstoneException  {
 
-
+public class NoSuchAuthorException extends Exception {
+    public NoSuchAuthorException(String search) {
+        super(search + " is not an Author. Data cannot be retrieved.");
+    }
 }

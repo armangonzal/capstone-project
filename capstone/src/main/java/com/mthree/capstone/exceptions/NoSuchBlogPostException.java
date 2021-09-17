@@ -9,7 +9,9 @@ package com.mthree.capstone.exceptions;
  *
  * @author ArmandoGonzalez
  */
-public class CapstoneException  {
 
-
+public class NoSuchBlogPostException extends Exception {
+    public NoSuchBlogPostException(String search) {
+        super(search + " is not a Blog Post. Data cannot be retrieved.");
+    }
 }

@@ -32,63 +32,73 @@ public class CapstoneServiceImpl implements CapstoneService {
     }
     
     @Override
-    public Author authorLogin(String username, String password)
+    public Author authorLogin(String username, String password) throws InvalidLoginException
     {
-
-        //throws NoSuchAuthorException, InvalidLoginException
-        Author author = this.dao.getAuthor(username);
-        if(password == author.getPassword() ) return author;
-        //else throw new IOException("incorrect login credentials);
-
-        return new Author("no name");
+        try {
+            Author author = this.dao.getAuthor(username);
+            if(password == author.getPassword() ) return author;
+            return new Author("no name");
+        } catch (Exception e) {
+            throw new InvalidLoginException();
+        }
     }
 
     @Override
-    public Author getAuthorById(int author_id) {
-
-        //throws NoSuchAuthorException
-        return this.dao.getAuthor(author_id);
+    public Author getAuthorById(int author_id)  throws NoSuchAuthorException {
+        try {
+            return this.dao.getAuthor(author_id);
+        } catch (Exception e) {
+            throw new NoSuchAuthorException("Author id: "+author_id);
+        }
     }
 
     @Override
-    public Author addAuthor(Author author) {
-        //throws DataAccessException
-        return this.dao.addAuthor(author);
+    public Author addAuthor(Author author) throws DataAccessException {
+        try {
+            return this.dao.addAuthor(author);
+        } catch (Exception e) {
+            throw new DataAccessException();
+        }
 
     }
 
     @Override
-    public BlogPost getBlogPostById(int post_id) {
-        //throws NoSuchBlogPostException
-        return this.dao.getBlogPost(post_id);
+    public BlogPost getBlogPostById(int post_id) throws NoSuchBlogPostException {
+        try {
+            return this.dao.getBlogPost(post_id);
+        } catch (Exception e) {
+            throw new NoSuchBlogPostException("Blog post id: "+post_id);
+        }
     }
 
     @Override
-    public List<BlogPost> getAllBlogPosts() {
+    public List<BlogPost> getAllBlogPosts() throws DataAccessException {
 
         try {
             return this.dao.getAllBlogPosts();
         } catch (Exception e) {
-            //throw new Exception("blog access error");
-            return new ArrayList<BlogPost>();
+            throw new DataAccessException();
         }
 
     }
 
     @Override
-    public List<BlogPost> getBlogPostsByHastag(String hashTag) {
+    public List<BlogPost> getBlogPostsByHastag(String hashTag) throws DataAccessException {
 
         try {
             return this.dao.getAllBlogPostsByHashtag(hashTag);
         } catch (Exception e) {
-            return new ArrayList<BlogPost>();
+            throw new DataAccessException();
         }
     }
 
     @Override
-    public BlogPost addBlogPost(BlogPost blogPost) {
-        //throws DataAccessException
-        return this.dao.addBlogPost(blogPost);
+    public BlogPost addBlogPost(BlogPost blogPost) throws DataAccessException {
+        try {
+            return this.dao.addBlogPost(blogPost);
+        } catch (Exception e) {
+            throw new DataAccessException();
+        }
     }
 
 }

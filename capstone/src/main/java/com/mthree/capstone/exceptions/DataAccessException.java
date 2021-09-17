@@ -9,7 +9,11 @@ package com.mthree.capstone.exceptions;
  *
  * @author ArmandoGonzalez
  */
-public class CapstoneException  {
 
+//This one was a test exception
+public class DataAccessException extends Exception {
 
+    public DataAccessException() {
+        super("Data cannot be retrieved.");
+    }
 }

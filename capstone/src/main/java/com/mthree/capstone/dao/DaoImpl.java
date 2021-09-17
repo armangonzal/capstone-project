@@ -7,6 +7,7 @@ package com.mthree.capstone.dao;
 
 import com.mthree.capstone.dto.BlogPost;
 import com.mthree.capstone.dto.*;
+import com.mthree.capstone.exceptions.*;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -41,6 +42,7 @@ public class DaoImpl implements Dao{
 
     @Override
     public Author getAuthor(String username) {
+
         final String sql = "SELECT author_id, username, password_text, isAdmin "
                 + "FROM author WHERE username = ?;";
 
@@ -48,11 +50,13 @@ public class DaoImpl implements Dao{
     }
 
     @Override
-    public Author getAuthor(int author_id) {
+    public Author getAuthor(int author_id)  {
+
         final String sql = "SELECT author_id, username, password_text, isAdmin "
                 + "FROM author WHERE author_id = ?;";
 
         return jdbcTemplate.queryForObject(sql, new AuthorMapper(), author_id);
+
     }
 
     @Override

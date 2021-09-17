@@ -7,6 +7,7 @@ package com.mthree.capstone.service;
 
 import com.mthree.capstone.dao.*;
 import com.mthree.capstone.dto.*;
+import com.mthree.capstone.exceptions.*;
 
 import java.util.List;
 
@@ -16,18 +17,17 @@ import java.util.List;
  */
 public interface CapstoneService {
     
-    Author authorLogin(String username, String password); 
-        //throws NoSuchAuthorException, InvalidLoginException
+    Author authorLogin(String username, String password) throws InvalidLoginException;
 
-    Author getAuthorById(int author_id); //throws NoSuchAuthorException
+    Author getAuthorById(int author_id) throws NoSuchAuthorException;
 
-    Author addAuthor(Author author); //throws DataAccessException
+    Author addAuthor(Author author) throws DataAccessException;
 
-    BlogPost getBlogPostById(int post_id); //throws NoSuchBlogPostException
+    BlogPost getBlogPostById(int post_id) throws NoSuchBlogPostException;
 
-    List<BlogPost> getAllBlogPosts(); 
+    List<BlogPost> getAllBlogPosts() throws DataAccessException;
 
-    List<BlogPost> getBlogPostsByHastag(String hashTag);
+    List<BlogPost> getBlogPostsByHastag(String hashTag) throws DataAccessException;
 
-    BlogPost addBlogPost(BlogPost blogPost); //throws DataAccessException
+    BlogPost addBlogPost(BlogPost blogPost) throws DataAccessException;
 }

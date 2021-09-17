@@ -6,6 +6,7 @@
 package com.mthree.capstone.dao;
 
 import com.mthree.capstone.dto.*;
+import com.mthree.capstone.exceptions.*;
 import java.util.List;
 
 /**
@@ -13,17 +14,17 @@ import java.util.List;
  * @author ArmandoGonzalez
  */
 public interface Dao {
-    Author getAuthor(String username); //throws NoSuchAuthorException
+    Author getAuthor(String username);
     
-    Author getAuthor(int author_id); //throws NoSuchAuthorException
+    Author getAuthor(int author_id);
     
-    Author addAuthor(Author author); //throws DataAccessException
+    Author addAuthor(Author author) ;
     
-    BlogPost getBlogPost(int post_id); //throws NoSuchBlogPostException
+    BlogPost getBlogPost(int post_id);
     
     List<BlogPost> getAllBlogPosts();
     
     List<BlogPost> getAllBlogPostsByHashtag(String hashTag);
     
-    BlogPost addBlogPost(BlogPost blogPost); //throws DataAccessException
+    BlogPost addBlogPost(BlogPost blogPost);
 }

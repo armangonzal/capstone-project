@@ -9,7 +9,9 @@ package com.mthree.capstone.exceptions;
  *
  * @author ArmandoGonzalez
  */
-public class CapstoneException  {
 
-
+public class InvalidLoginException extends Exception {
+    public InvalidLoginException() {
+        super("Invalid credentials. Cannot be logged in.");
+    }
 }
