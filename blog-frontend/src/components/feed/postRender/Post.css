@@ -65,17 +65,30 @@ p:nth-child(3) {
   color: #004182;
   font-weight: 600;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .inputOptions {
   margin-right: 20px;
 }
-
+.MuiAvatar-img:hover {
+  cursor: pointer;
+}
+.post_info > h2,
+.post_info > p:hover {
+  cursor: pointer;
+}
 .post__threeDot {
   margin-left: 250px;
   color: gray;
   width: 20px !important;
 }
+
+.post__threeDot:hover {
+  cursor: pointer;
+  color: rgb(46, 45, 45);
+}
+
 /* 
 span {
 } */

@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import { Avatar } from '@material-ui/core'
 import default_avatar from '../../../static/default_avatar.png'
 import MoreHorizSharpIcon from '@material-ui/icons/MoreHorizSharp';
+import { v4 as uuidv4 } from 'uuid';
 import "./Post.css"
 
 
@@ -25,7 +26,7 @@ const Post = forwardRef(({ name, title, description, hashtags, dateCreated }, re
 
             <div className="post_footer">
                 {
-                    hashtags.map(e => <span>#{e}</span>)
+                    hashtags.map(e => <span key={uuidv4()} >#{e}</span>)
                 }
             </div>
         </div>
