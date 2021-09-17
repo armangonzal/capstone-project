@@ -8,6 +8,8 @@ package com.mthree.capstone.controller;
 import com.mthree.capstone.service.*;
 import com.mthree.capstone.dto.*;
 import com.mthree.capstone.exceptions.*;
+import com.mthree.capstone.exceptions.CapstoneException.NoSuchBlogPostException;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -46,7 +48,11 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
     public String loginToAuthor(HttpServletRequest request) throws InvalidLoginException{
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        try{
         currentAuthor = service.authorLogin(username, password);
+        }catch(InvalidLoginException e){
+            System.out.println("Bad login info. Please try again.");
+        }
         return "login";
         
     }
@@ -59,15 +65,24 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
     @GetMapping("blog")
     public String displayblogPosts(Model model) throws DataAccessException{
         List<BlogPost> blogPosts = service.getAllBlogPosts();
-        model.addAttribute("blogPosts", blogPosts);
+        try{
+            model.addAttribute("blogPosts", blogPosts);
+        }catch(DataAccessException e){
+            System.out.println("problem getting posts, please try again.")
+        }
         return "blogPosts";
     }
 
 
     @GetMapping("blog")
     public String displayblogPostsByHashtag(HttpServletRequest request, Model model) throws NoSuchBlogPostException{
-        String hashtag = request.getParameter("hashtag")
-        List<BlogPost> blogPosts = service.getlogPostsByHashtag(hashtag);
+        String hashtag = request.getParameter("hashtag");
+        
+        try{
+            List<BlogPost> blogPosts = service.getlogPostsByHashtag(hashtag);
+        }catch(NoSuchBlogPostException e){
+            System.out.println("Couldn;t find any posts with that hashtag, please try again.");
+        }
         model.addAttribute("blogPosts", blogPosts);
         return "blogPosts";
     }
@@ -75,7 +90,11 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
     @GetMapping("author")
     public String getAuthorById(HttpServletRequest request, Model model) throws NoSuchAuthorException{
         int authorId = Integer.parseInt(request.getParameter("author_id"));
-        Author author = service.getAuthoryId(authorId);
+        try{
+            Author author = service.getAuthoryId(authorId);
+        }catch(NoSuchAuthorException e){
+            System.out.println("No author with that id, please try again.")
+        }
         model.addAttribute("author", author);
         return "blogPosts";
     }
@@ -99,8 +118,11 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
         blogPost.setTextBody(body);
         blogPost.setDateCreated(LocalDate.now());
         blogPost.setExpiration(expiration);
-        service.addBlogPost(blogPost);
-        
+        try{
+            service.addBlogPost(blogPost);
+        }catch(DataAccessException e){
+            System.out.println("Trouble adding the blog, please try again.")
+        }
         return "author";
     }
 
@@ -109,18 +131,20 @@ public class Controller throws InvalidLoginException, NoSuchBlogPostException, N
 
         int authorId = Integer.parseInt(request.getParameter("authorId"));
 
-        String firstName = request.getParameter("firstName");
+        String username = request.getParameter("username");
 
-        String lastName = request.getParameter("lastName");
+        String password = request.getParameter("password");
 
         
-        Author author = new Author();
+        Author author = new Author(username);
         author.setAuthorId(authorId);
-        author.setFirstName(firstName);
-        author.setlastName(lastName);
+        author.setPassword(password);
         author.setIsAdmin(false);
-        service.addAuthor(author);
-        
+        try{
+            service.addAuthor(author);
+        }catch(DataAccessException e){
+            System.out.println("Trouble adding that author, please try again.")
+        }
         return "author";
     }
 
