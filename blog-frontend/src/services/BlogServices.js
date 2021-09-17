@@ -9,8 +9,7 @@ class BlogService {
     getAuthorById(author_id) {
         return axios.get(BLOG_API_BASE_URL + '/author/' + author_id);
     }
-
-    // done
+                                                                // done
     getBlogs() {
         return axios.get(BLOG_API_BASE_URL + '/blogs');
     }
@@ -22,13 +21,12 @@ class BlogService {
     getLoginCredential(author) {                                  // done 
         return axios.post(BLOG_API_BASE_URL + '/login');         // author id 
     }
-
                                                                 // done
     postNewPost(newPost) {
         return axios.post(BLOG_API_BASE_URL + '/author/' + newPost);
     }
 
-    createNewUser() {
+    createNewUser() {        // done
         return axios.post(BLOG_API_BASE_URL, '/register');
     }
 

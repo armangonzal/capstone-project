@@ -3,11 +3,14 @@ import { Avatar } from '@material-ui/core'
 import default_avatar from '../../../static/default_avatar.png'
 import MoreHorizSharpIcon from '@material-ui/icons/MoreHorizSharp';
 import { Dropdown } from "react-bootstrap";
+// import Sidebar from "../../sidebar/Sidebar";
 import { v4 as uuidv4 } from 'uuid';
 import "./Post.css"
 
 
 const Post = forwardRef(({ name, title, description, hashtags, dateCreated }, ref) => {
+    // function handleHashTag(e) {
+    // }
     return (
         <div ref={ref} className="post">
             <div className="post_header">
@@ -36,10 +39,14 @@ const Post = forwardRef(({ name, title, description, hashtags, dateCreated }, re
                     <div className="post_footer">
                         {
                             hashtags.map(e =>
-                                <span key={uuidv4().substr(0, 4)}
-                                >
-                                    #{e}</span>)
+                                <span key={uuidv4().substr(0, 4)}> #{e}</span>
+                            )
                         }
+                        {/* {
+                            hashtags.map(e => <Sidebar hashDetail={e} />)
+                        } */}
+
+
                     </div>
                 )
             }
